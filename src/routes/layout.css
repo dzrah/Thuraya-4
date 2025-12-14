@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* Antarctica Font Family */
+@font-face {
+	font-family: 'Antarctica';
+	src: url('/fonts/Antarctica-ExpandedLight.otf') format('opentype');
+	font-weight: 300;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Antarctica';
+	src: url('static/fonts/Antarctica-ExpandedBold.otf') format('opentype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Antarctica';
+	src: url('/fonts/Antarctica-ExpandedSemiBold.otf') format('opentype');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Antarctica';
+	src: url('static/fonts/Antarctica-ExpandedBold.otf') format('opentype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+/* Add to Tailwind theme */
+@theme {
+	--font-antarctica: 'Antarctica', sans-serif;
+}
+
+/* Set as default body font */
+body {
+	font-family: var(--font-antarctica);
+}
+
+/* In app.css or global styles */
+@layer components {
+	.form-input {
+		@apply w-full rounded-sm border border-transparent bg-white px-4 py-4 transition-colors placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none;
+	}
+}
