@@ -11,7 +11,7 @@
 <Hero />
 <NextGenSat />
 <Products />
-<FormCRMStyle />
-<!-- <FormCRM /> -->
+<!-- <FormCRMStyle /> -->
+<FormCRM />
 <!-- <Form /> -->
 <!-- <Carousel {slides} autoPlay={true} interval={5000} /> -->
