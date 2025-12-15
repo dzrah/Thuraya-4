@@ -1,31 +1,29 @@
-<script>
+<script lang="ts">
 	import { onDestroy, onMount } from 'svelte';
 
-	import Section from './Section.svelte';
-	import Container from './Container.svelte';
 	import { fade } from 'svelte/transition';
 
 	let { slides = [], autoPlay = true, interval = 5000 } = $props();
 
 	let currentIndex = $state(0);
 	let isPaused = $state(false);
-	let autoPlayInterval;
+	let autoPlayInterval: number | undefined;
 
-	const totalSlides = slides.length;
+	let totalSlides = $derived(slides.length);
 
 	function next() {
 		currentIndex = (currentIndex + 1) % totalSlides;
 	}
 
 	function prev() {
-		currentIndex = (currentIndex - 1) % totalSlides;
+		currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
 	}
 
-	function goTO(index) {
+	function goTO(index: number) {
 		currentIndex = index;
 	}
 
-	function handleKeydown(event) {
+	function handleKeydown(event: KeyboardEvent) {
 		if (event.key === 'ArrowLeft') prev();
 		if (event.key === 'ArrowRight') next();
 	}
@@ -77,14 +75,14 @@
 					src={slides[currentIndex].image}
 					alt={slides[currentIndex].title}
 					class="max-h-[300px] object-contain flex items-start justify-center"
-					in:fade={{ duration: 800 }}
+					in:fade={{ duration: 200 }}
 				/>
 			{/key}
 
 			<button
 				onclick={next}
 				class="absolute top-[50%] right-0 z-10 text-blue-500 hover:text-blue-400 transition-colors p-0 cursor-pointer"
-				aria-label="Previous slide"
+				aria-label="Next slide"
 			>
 				<svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -96,7 +94,7 @@
 			{#key currentIndex}
 				<div
 					class="text-white md:h-60 h-50 flex-col items-center justify-center"
-					in:fade={{ duration: 800 }}
+					in:fade={{ duration: 200 }}
 				>
 					<h2 class="text-3xl font-semibold mb-4 sm:text-[1.7rem] text-[0.8rem]">
 						{slides[currentIndex].title}
