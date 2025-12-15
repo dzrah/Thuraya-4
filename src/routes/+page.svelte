@@ -4,10 +4,12 @@
 	import Hero from './components/Hero.svelte';
 	import NextGenSat from './components/NextGenSat.svelte';
 	import Products from './components/Products.svelte';
+	import FormCRM from './FormCRM.svelte';
 </script>
 
 <Hero />
 <NextGenSat />
 <Products />
-<Form />
+<FormCRM />
+<!-- <Form /> -->
 <!-- <Carousel {slides} autoPlay={true} interval={5000} /> -->
