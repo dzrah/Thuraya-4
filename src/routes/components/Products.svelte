@@ -15,21 +15,28 @@
 				'Thuraya-4 delivers sovereign, always-on L-band connectivity for ministries of defense, interior and emergency services. Built for extreme conditions, the Thuraya-4 supports rugged, field-deployable terminals interoperable with tactical radios, enabling secure personnel/asset tracking.'
 		},
 		{
-			id: 1,
+			id: 2,
 			image: '/img-2.png',
-			title: 'GOVERNMENT & PUBLIC SECTOR',
+			title: 'GOVERNMENT',
 			description:
 				'For government agencies, NGOs, and disaster-response teams, Thuraya-4 provides portable, deploy-anywhere satellite broadband with encrypted communications and assured service during crises. Easily integrate with existing systems and take advantage of compliance-ready operations.'
 		},
 		{
-			id: 1,
+			id: 5,
+			image: '/img-5.png',
+			title: 'ENERGY',
+			description:
+				'Keep remote assets online: from deserts and rigs to moving fleets. When fiber stops and cellular fades, operations still need telemetry, voice, and safety comms. Thuraya-4’s resilient L-band makes upstream and midstream sites get back on the grid, with no downtime.'
+		},
+		{
+			id: 3,
 			image: '/img-3.png',
 			title: 'MARITIME',
 			description:
 				'Keep fleets connected end-to-end with Thuraya-4. Seamless blue-water coverage, resilient bandwidth in harsh weather and secure data exchange. From container lines to offshore platforms, integrate crew voice, tracking, and operations.'
 		},
 		{
-			id: 1,
+			id: 4,
 			image: '/img-4.png',
 			title: 'AVIATION',
 			description:
@@ -82,6 +89,19 @@
 				imgSrc="/Orion_Neo.png"
 				para="Maritime terminal providing high-uptime voice and IP data for vessels operating beyond coastal coverage."
 			/>
+
+			<ProdctCard
+				productUrl="https://www.thuraya.com/en/products-list/land-voice/ttac-range"
+				title="TTAC RANGE"
+				imgSrc="/TTAC.png"
+				para="Extends VHF/UHF over satellite, linking ops beyond line-of-sight for instant, wide-area."
+			/>
+			<ProdctCard
+				productUrl="https://www.thuraya.com/en/products-list/aero/uav-aero-terminal-t220"
+				title="UAV 220"
+				imgSrc="/UAV_220.png"
+				para="Lightweight SATCOM link for unmanned aircraft, enabling BVLOS command, control, and payload data."
+			/>
 			<ProdctCard
 				productUrl="https://www.thuraya.com/en/products-list/aero/fixed-wing-aero-terminal-t320"
 				title="AERO 320"
@@ -93,18 +113,6 @@
 				title="HELO 420"
 				imgSrc="/Helo_420.png"
 				para="Helicopter-ready satcom engineered for vibration and rotor-wash, keeping crews connected in flight."
-			/>
-			<ProdctCard
-				productUrl="https://www.thuraya.com/en/products-list/aero/uav-aero-terminal-t220"
-				title="UAV 220"
-				imgSrc="/UAV_220.png"
-				para="Lightweight SATCOM link for unmanned aircraft, enabling BVLOS command, control, and payload data."
-			/>
-			<ProdctCard
-				productUrl="https://www.thuraya.com/en/products-list/land-voice/ttac-range"
-				title="TTAC RANGE"
-				imgSrc="/TTAC.png"
-				para="Extends VHF/UHF over satellite, linking ops beyond line-of-sight for instant, wide-area."
 			/>
 		</div>
 	</Container>
