@@ -1,0 +1,9 @@
+{
+	"redirects": [
+		{
+			"source": "/(.*)",
+			"destination": "https://www.thuraya.com/en/thuraya-4-ngs/",
+			"permanent": true
+		}
+	]
+}
