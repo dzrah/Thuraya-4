@@ -29,37 +29,39 @@
 		// Fix inputs - THE KEY IS flex: none !important in the inline style
 		wrapper.querySelectorAll('input, textarea, select').forEach((el) => {
 			el.style.cssText = `
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 100% !important;
-        flex: none !important;
-        flex-basis: 100% !important;
-        flex-grow: 0 !important;
-        flex-shrink: 0 !important;
-        display: block !important;
-        padding: 14px 16px !important;
-        background-color: #ffffff !important;
-        border: 1px solid #e5e7eb !important;
-        border-radius: 8px !important;
-        font-size: 16px !important;
-        font-family: 'Antartica', sans-serif !important;
-        color: #374151 !important;
-        box-sizing: border-box !important;
-        height: auto !important;
-      `;
+				width: 100% !important;
+				max-width: 100% !important;
+				min-width: 100% !important;
+				flex: none !important;
+				flex-basis: 100% !important;
+				flex-grow: 0 !important;
+				flex-shrink: 0 !important;
+				display: block !important;
+				padding: 14px 16px !important;
+				background-color: #ffffff !important;
+				border: 1px solid #e5e7eb !important;
+				border-radius: 8px !important;
+				font-size: 16px !important;
+				font-family: 'Antartica', sans-serif !important;
+				color: #374151 !important;
+				box-sizing: border-box !important;
+				height: auto !important;
+			`;
 		});
 
 		// Fix textareas specifically
 		wrapper.querySelectorAll('textarea').forEach((el) => {
 			el.style.cssText += `
-        min-height: 120px !important;
-        resize: vertical !important;
-      `;
+				min-height: 120px !important;
+				resize: vertical !important;
+			`;
 		});
 
-		// Fix field blocks - change from flex to block (but keep hidden fields hidden)
+		// Fix ALL field block types - change from flex to block (but keep hidden fields hidden)
 		wrapper
-			.querySelectorAll('.textFormFieldBlock, .optionSetFormFieldBlock, .phoneFormFieldBlock')
+			.querySelectorAll(
+				'.textFormFieldBlock, .optionSetFormFieldBlock, .phoneFormFieldBlock, .lookupFormFieldBlock, .dateTimeFormFieldBlock, .multiOptionSetFormFieldBlock, .twoOptionFormFieldBlock'
+			)
 			.forEach((el) => {
 				// Skip fields that should be hidden
 				if (el.getAttribute('data-hide') === 'hide') {
@@ -68,33 +70,30 @@
 				}
 
 				el.style.cssText = `
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 12px 0 !important;
-        box-sizing: border-box !important;
-        flex-direction: unset !important;
-        gap: unset !important;
-      `;
+					display: block !important;
+					width: 100% !important;
+					max-width: 100% !important;
+					padding: 0px 0 !important;
+					margin: 0 !important;
+					box-sizing: border-box !important;
+					flex-direction: unset !important;
+					gap: unset !important;
+				`;
 			});
 
-		// Fix labels
-		wrapper
-			.querySelectorAll(
-				'.textFormFieldBlock label, .optionSetFormFieldBlock label, .phoneFormFieldBlock label'
-			)
-			.forEach((el) => {
-				el.style.cssText = `
-        display: block !important;
-        width: 100% !important;
-        flex: none !important;
-        margin-bottom: 8px !important;
-        font-size: 14px !important;
-        font-weight: 600 !important;
-        font-family: 'Antartica', sans-serif !important;
-        color: #374151 !important;
-      `;
-			});
+		// Fix ALL labels
+		wrapper.querySelectorAll('label').forEach((el) => {
+			el.style.cssText = `
+					display: block !important;
+					width: 100% !important;
+					flex: none !important;
+					margin-bottom: 8px !important;
+					font-size: 14px !important;
+					font-weight: 600 !important;
+					font-family: 'Antartica', sans-serif !important;
+					color: #374151 !important;
+				`;
+		});
 
 		// Hide Dynamics headings
 		wrapper.querySelectorAll('[data-editorblocktype="Text"]').forEach((el) => {
@@ -104,24 +103,29 @@
 		// Fix submit button
 		wrapper.querySelectorAll('.submitButton').forEach((el) => {
 			el.style.cssText = `
-        background-color: #1e40af !important;
-        color: #ffffff !important;
-        font-weight: 600 !important;
-        font-size: 14px !important;
-        font-family: 'Antartica', sans-serif !important;
-        padding: 14px 48px !important;
-        border: none !important;
-        border-radius: 8px !important;
-        cursor: pointer !important;
-      `;
+				background-color: #1e40af !important;
+				color: #ffffff !important;
+				font-weight: 600 !important;
+				font-size: 14px !important;
+				font-family: 'Antartica', sans-serif !important;
+				padding: 14px 48px !important;
+				border: none !important;
+				border-radius: 8px !important;
+				cursor: pointer !important;
+			`;
 		});
 
 		wrapper.querySelectorAll('.submitButtonWrapper').forEach((el) => {
 			el.style.cssText = `
-        padding: 20px 0 !important;
-        text-align: right !important;
-        width: 100% !important;
-      `;
+				padding: 20px 0 !important;
+				text-align: right !important;
+				width: 100% !important;
+			`;
+		});
+
+		// Fix any nested containers that might have padding
+		wrapper.querySelectorAll('.inner, .columnContainer, th, td').forEach((el) => {
+			el.style.padding = '0';
 		});
 	}
 </script>
