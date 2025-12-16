@@ -50,10 +50,16 @@
       `;
 		});
 
-		// Fix field blocks - change from flex to block
+		// Fix field blocks - change from flex to block (but keep hidden fields hidden)
 		wrapper
 			.querySelectorAll('.textFormFieldBlock, .optionSetFormFieldBlock, .phoneFormFieldBlock')
 			.forEach((el) => {
+				// Skip fields that should be hidden
+				if (el.getAttribute('data-hide') === 'hide') {
+					el.style.cssText = 'display: none !important;';
+					return;
+				}
+
 				el.style.cssText = `
         display: block !important;
         width: 100% !important;
