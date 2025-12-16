@@ -20,6 +20,12 @@
 		const wrapper = document.querySelector('.dynamics-form-wrapper');
 		if (!wrapper) return;
 
+		// Apply font to entire form
+		const form = wrapper.querySelector('.marketingForm');
+		if (form) {
+			form.style.fontFamily = "'Antartica', sans-serif";
+		}
+
 		// Fix inputs - THE KEY IS flex: none !important in the inline style
 		wrapper.querySelectorAll('input, textarea, select').forEach((el) => {
 			el.style.cssText = `
@@ -36,6 +42,7 @@
         border: 1px solid #e5e7eb !important;
         border-radius: 8px !important;
         font-size: 16px !important;
+        font-family: 'Antartica', sans-serif !important;
         color: #374151 !important;
         box-sizing: border-box !important;
         height: auto !important;
@@ -84,6 +91,7 @@
         margin-bottom: 8px !important;
         font-size: 14px !important;
         font-weight: 600 !important;
+        font-family: 'Antartica', sans-serif !important;
         color: #374151 !important;
       `;
 			});
@@ -100,6 +108,7 @@
         color: #ffffff !important;
         font-weight: 600 !important;
         font-size: 14px !important;
+        font-family: 'Antartica', sans-serif !important;
         padding: 14px 48px !important;
         border: none !important;
         border-radius: 8px !important;

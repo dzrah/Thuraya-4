@@ -29,7 +29,7 @@
 
 		<div class="flex items-center justify-center w-full h-full">
 			<img
-				class=" mt-10 w-35 sm:mt-15 sm:w-55 md:w-65 lg:w-95 lg:mt-30 xl:w-115 2xl:w-150"
+				class=" mt-10 w-35 sm:mt-15 sm:w-55 md:w-65 lg:w-95 md:mt-20 lg:mt-60 xl:w-115 2xl:w-150"
 				src="/satellite.png"
 				alt=""
 			/>
