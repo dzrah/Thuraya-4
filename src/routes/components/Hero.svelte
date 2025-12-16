@@ -11,7 +11,9 @@
 	</div>
 
 	<Container class="absolute flex justify-center items-center">
-		<div class="flex-col w-full h-full items-center justify-center md:mb-7 lg:mt-0 text-amber-50">
+		<div
+			class="flex-col w-full h-full items-center justify-center md:mb-7 lg:mt-0 lg:mb-40 text-amber-50"
+		>
 			<h1
 				class="font-antarctica font-semibold text-[1.2rem] sm:text-[1.3rem] md:text-[1.5rem] lg:text-[2.5rem] xl:text-[2.2rem] 2xl:text-[2.5rem]"
 			>
@@ -29,7 +31,7 @@
 
 		<div class="flex items-center justify-center w-full h-full">
 			<img
-				class=" mt-10 w-35 sm:mt-15 sm:w-55 md:w-65 lg:w-95 md:mt-20 lg:mt-60 xl:w-115 2xl:w-150"
+				class=" mt-10 w-35 sm:mt-15 sm:w-55 md:w-65 lg:w-95 md:mt-20 lg:mt-30 xl:mt-50 xl:w-315 2xl:mt-50 2xl:w-1200"
 				src="/satellite.png"
 				alt=""
 			/>
