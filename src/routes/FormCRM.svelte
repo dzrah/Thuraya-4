@@ -4,51 +4,74 @@
 	import Container from './components/Container.svelte';
 
 	onMount(() => {
-		// Load the Dynamics 365 form script
 		const script = document.createElement('script');
 		script.src =
 			'https://cxppusa1formui01cdnsa01-endpoint.azureedge.net/uae/FormLoader/FormLoader.bundle.js';
 		script.onload = () => {
-			// Wait for form to render, then fix widths
+			// Run multiple times to catch async form rendering
+			setTimeout(fixFormWidth, 500);
 			setTimeout(fixFormWidth, 1000);
+			setTimeout(fixFormWidth, 1500);
 			setTimeout(fixFormWidth, 2000);
 			setTimeout(fixFormWidth, 3000);
 		};
 		document.body.appendChild(script);
+
+		// Also watch for DOM changes and reapply styles
+		const observer = new MutationObserver(() => {
+			fixFormWidth();
+		});
+
+		setTimeout(() => {
+			const wrapper = document.querySelector('.dynamics-form-wrapper');
+			if (wrapper) {
+				observer.observe(wrapper, { childList: true, subtree: true });
+			}
+		}, 1000);
+
+		return () => observer.disconnect();
 	});
 
 	function fixFormWidth() {
 		const wrapper = document.querySelector('.dynamics-form-wrapper');
 		if (!wrapper) return;
 
-		// Fix width on layout container
-		const layout = wrapper.querySelector('[data-layout="true"]');
-		if (layout) {
-			layout.style.maxWidth = '100%';
-			layout.style.width = '100%';
-		}
-
-		// Fix outer tables - just width, NOT display
-		wrapper.querySelectorAll('.outer').forEach((el) => {
-			el.style.width = '100%';
-			el.style.maxWidth = '100%';
+		// Force width on ALL inputs, textareas, selects
+		wrapper.querySelectorAll('input, textarea, select').forEach((el) => {
+			el.style.setProperty('width', '100%', 'important');
+			el.style.setProperty('max-width', '100%', 'important');
+			el.style.setProperty('box-sizing', 'border-box', 'important');
 		});
 
-		// Fix all tables - just width
-		wrapper.querySelectorAll('table').forEach((el) => {
-			el.style.width = '100%';
-			el.style.maxWidth = '100%';
-		});
+		// Force width on form field blocks
+		wrapper
+			.querySelectorAll('.textFormFieldBlock, .optionSetFormFieldBlock, .phoneFormFieldBlock')
+			.forEach((el) => {
+				el.style.setProperty('width', '100%', 'important');
+				el.style.setProperty('max-width', '100%', 'important');
+				el.style.setProperty('padding-left', '0', 'important');
+				el.style.setProperty('padding-right', '0', 'important');
+			});
 
-		// Remove hardcoded width attributes
+		// Force width on layout containers
+		wrapper
+			.querySelectorAll(
+				'[data-layout="true"], .outer, table, th, td, .columnContainer, .inner, .containerWrapper, .tbContainer'
+			)
+			.forEach((el) => {
+				el.style.setProperty('width', '100%', 'important');
+				el.style.setProperty('max-width', '100%', 'important');
+			});
+
+		// Remove any hardcoded width attributes
 		wrapper.querySelectorAll('[width]').forEach((el) => {
-			el.setAttribute('width', '100%');
+			el.removeAttribute('width');
 		});
 
-		// Fix inline styles with 600px
-		wrapper.querySelectorAll('[style*="600"]').forEach((el) => {
-			el.style.width = '100%';
-			el.style.maxWidth = '100%';
+		// Fix any element with inline style containing width
+		wrapper.querySelectorAll('[style*="width"]').forEach((el) => {
+			el.style.setProperty('width', '100%', 'important');
+			el.style.setProperty('max-width', '100%', 'important');
 		});
 	}
 </script>
@@ -117,7 +140,7 @@
 
 	@media (min-width: 768px) {
 		.form-text-side {
-			width: 40%;
+			width: 35%;
 			padding-right: 1rem;
 		}
 	}
@@ -129,42 +152,29 @@
 
 	@media (min-width: 768px) {
 		.form-container-side {
-			width: 60%;
+			width: 65%;
 		}
 	}
 
 	/* ============================================
-     DYNAMICS FORM WRAPPER
+     DYNAMICS FORM - AGGRESSIVE FULL WIDTH
      ============================================ */
 
 	.dynamics-form-wrapper {
-		width: 100%;
-		max-width: 100%;
-	}
-
-	/* Layout container */
-	.dynamics-form-wrapper :global([data-layout='true']) {
-		max-width: 100% !important;
-		width: 100% !important;
-		margin: 0 auto !important;
-	}
-
-	/* Tables - only fix width, keep natural display */
-	.dynamics-form-wrapper :global(table) {
 		width: 100% !important;
 		max-width: 100% !important;
 	}
 
-	.dynamics-form-wrapper :global(.outer) {
-		width: 100% !important;
+	.dynamics-form-wrapper :global(*) {
 		max-width: 100% !important;
+		box-sizing: border-box !important;
 	}
 
+	.dynamics-form-wrapper :global([data-layout='true']),
+	.dynamics-form-wrapper :global(table),
+	.dynamics-form-wrapper :global(.outer),
 	.dynamics-form-wrapper :global(th),
-	.dynamics-form-wrapper :global(td) {
-		width: 100% !important;
-	}
-
+	.dynamics-form-wrapper :global(td),
 	.dynamics-form-wrapper :global(.columnContainer),
 	.dynamics-form-wrapper :global(.inner),
 	.dynamics-form-wrapper :global(.containerWrapper),
@@ -173,27 +183,25 @@
 		max-width: 100% !important;
 	}
 
-	/* ============================================
-     HIDE DYNAMICS HEADINGS (we have our own)
-     ============================================ */
-
+	/* Hide Dynamics headings */
 	.dynamics-form-wrapper :global([data-editorblocktype='Text']) {
 		display: none !important;
 	}
 
 	/* ============================================
-     FORM FIELD STYLING
+     FORM FIELD BLOCKS
      ============================================ */
 
 	.dynamics-form-wrapper :global(.textFormFieldBlock),
 	.dynamics-form-wrapper :global(.optionSetFormFieldBlock),
 	.dynamics-form-wrapper :global(.phoneFormFieldBlock) {
-		padding: 10px 20px !important;
+		padding: 10px 0 !important;
 		width: 100% !important;
+		max-width: 100% !important;
 		box-sizing: border-box !important;
 	}
 
-	/* Labels - show them for better UX */
+	/* Labels */
 	.dynamics-form-wrapper :global(.textFormFieldBlock label),
 	.dynamics-form-wrapper :global(.optionSetFormFieldBlock label),
 	.dynamics-form-wrapper :global(.phoneFormFieldBlock label) {
@@ -203,14 +211,23 @@
 		font-weight: 600 !important;
 		color: #374151 !important;
 		margin-bottom: 8px !important;
+		width: 100% !important;
 	}
 
-	/* Input fields */
+	/* ============================================
+     INPUTS - FORCE FULL WIDTH
+     ============================================ */
+
+	.dynamics-form-wrapper :global(input),
+	.dynamics-form-wrapper :global(textarea),
+	.dynamics-form-wrapper :global(select),
 	.dynamics-form-wrapper :global(.textFormFieldBlock input),
 	.dynamics-form-wrapper :global(.textFormFieldBlock textarea),
 	.dynamics-form-wrapper :global(.optionSetFormFieldBlock select),
 	.dynamics-form-wrapper :global(.phoneFormFieldBlock input) {
 		width: 100% !important;
+		max-width: 100% !important;
+		min-width: 100% !important;
 		padding: 14px 16px !important;
 		background-color: #ffffff !important;
 		border: 1px solid #e5e7eb !important;
@@ -221,32 +238,32 @@
 		box-sizing: border-box !important;
 		-webkit-appearance: none !important;
 		appearance: none !important;
+		display: block !important;
 	}
 
 	/* Focus state */
-	.dynamics-form-wrapper :global(.textFormFieldBlock input:focus),
-	.dynamics-form-wrapper :global(.textFormFieldBlock textarea:focus),
-	.dynamics-form-wrapper :global(.optionSetFormFieldBlock select:focus),
-	.dynamics-form-wrapper :global(.phoneFormFieldBlock input:focus) {
+	.dynamics-form-wrapper :global(input:focus),
+	.dynamics-form-wrapper :global(textarea:focus),
+	.dynamics-form-wrapper :global(select:focus) {
 		outline: none !important;
 		border-color: #3b82f6 !important;
 		box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1) !important;
 	}
 
-	/* Placeholder text */
+	/* Placeholder */
 	.dynamics-form-wrapper :global(input::placeholder),
 	.dynamics-form-wrapper :global(textarea::placeholder) {
 		color: #9ca3af !important;
 	}
 
 	/* Textarea */
-	.dynamics-form-wrapper :global(.textFormFieldBlock textarea) {
+	.dynamics-form-wrapper :global(textarea) {
 		min-height: 120px !important;
 		resize: vertical !important;
 	}
 
 	/* Select dropdown */
-	.dynamics-form-wrapper :global(.optionSetFormFieldBlock select) {
+	.dynamics-form-wrapper :global(select) {
 		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%239ca3af'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E") !important;
 		background-repeat: no-repeat !important;
 		background-position: right 12px center !important;
@@ -261,8 +278,9 @@
 
 	.dynamics-form-wrapper :global(.submitButtonWrapper),
 	.dynamics-form-wrapper :global([data-editorblocktype='SubmitButton']) {
-		padding: 20px !important;
+		padding: 20px 0 !important;
 		text-align: right !important;
+		width: 100% !important;
 	}
 
 	.dynamics-form-wrapper :global(.submitButton) {
@@ -294,13 +312,12 @@
 		.dynamics-form-wrapper :global(.textFormFieldBlock),
 		.dynamics-form-wrapper :global(.optionSetFormFieldBlock),
 		.dynamics-form-wrapper :global(.phoneFormFieldBlock) {
-			padding: 8px 10px !important;
+			padding: 8px 0 !important;
 		}
 
-		.dynamics-form-wrapper :global(.textFormFieldBlock input),
-		.dynamics-form-wrapper :global(.textFormFieldBlock textarea),
-		.dynamics-form-wrapper :global(.optionSetFormFieldBlock select),
-		.dynamics-form-wrapper :global(.phoneFormFieldBlock input) {
+		.dynamics-form-wrapper :global(input),
+		.dynamics-form-wrapper :global(textarea),
+		.dynamics-form-wrapper :global(select) {
 			padding: 12px 14px !important;
 			font-size: 16px !important;
 		}
@@ -308,7 +325,7 @@
 		.dynamics-form-wrapper :global(.submitButtonWrapper),
 		.dynamics-form-wrapper :global([data-editorblocktype='SubmitButton']) {
 			text-align: center !important;
-			padding: 16px 10px !important;
+			padding: 16px 0 !important;
 		}
 
 		.dynamics-form-wrapper :global(.submitButton) {
