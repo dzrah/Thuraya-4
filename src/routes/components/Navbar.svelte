@@ -42,10 +42,14 @@
 				></span></button
 			>
 
-			<div class="hidden lg:flex items-center justify-between h-full w-auto gap-10 font-extralight">
-				<a href="#next-gen">Next Gen Satellite</a>
-				<a href="#products">Products</a>
-				<a href="#industry">Industries</a>
+			<div
+				class="hidden lg:flex items-center justify-between h-full w-auto gap-10 font-extralight text-white"
+			>
+				<a class="hover:opacity-80 transition-opacity opacity-100" href="#next-gen"
+					>Next Gen Satellite</a
+				>
+				<a class="hover:opacity-80 transition-opacity" href="#products">Products</a>
+				<a class="hover:opacity-80 transition-opacity" href="#industry">Industries</a>
 			</div>
 			<div class="hidden lg:flex">
 				<a
@@ -71,7 +75,7 @@
 					</a>
 					<a
 						href="#contact"
-						class="bg-white px-4 py-2 text-[#121a6b] rounded-1xl text-center hover:bg-opacity-90 transition-all"
+						class="bg-white px-4 py-2 text-[#121a6b] rounded-1xl text-center hover:bg-[#0a82dc] transition-all duration-100 hover:text-white"
 						onclick={closeMenu}
 					>
 						Contact Us
