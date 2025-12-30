@@ -50,3 +50,15 @@ body {
 		@apply w-full rounded-sm border border-transparent bg-white px-4 py-4 transition-colors placeholder:text-gray-400 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20 focus:outline-none;
 	}
 }
+
+[id] {
+	scroll-margin-top: 12rem;
+}
+
+/* #products {
+	scroll-margin-top: 25rem !important;
+} */
+
+html {
+	scroll-behavior: smooth;
+}

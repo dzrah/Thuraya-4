@@ -45,6 +45,9 @@
 	];
 </script>
 
+<div id="products"></div>
+<!-- invisible anchor -->
+
 <Section class="relative overflow-hidden" bgClass="bg-transparent">
 	<div class="absolute inset-x-0 top-0 h-[10%] bg-[#f0f1f7] -z-1000000"></div>
 	<div
@@ -53,9 +56,12 @@
 	<div class="absolute inset-x-0 bottom-0 sm:h-[40%] h-[5%] bg-[#f0f1f7] -z-1000000"></div>
 
 	<Container class="flex-col w-full h-full">
-		<div class="text-[#121a6b] font-semibold text-[1.05rem] mb-5 lg:text-left text-center">
+		<div
+			class="text-[#121a6b] font-semibold text-[1.05rem] mb-5 lg:text-left text-center scorll-mt-32"
+		>
 			<h1>Our Thuraya-4 Satellite Enabled Products</h1>
 		</div>
+
 		<div
 			class="items-center justify-center lg:my-15 my-8 grid lg:grid-cols-3 lg:gap-5 gap-3 w-full"
 		>
@@ -116,66 +122,68 @@
 			/>
 		</div>
 	</Container>
+
 	<Container>
-		<div
-			class="text-[#ffffff] font-semibold text-[1.2rem] lg:text-[1.7rem] lg:mb-10 mb-20 mt-20 w-full flex items-center justify-center lg:justify-start text-center lg:text-left"
-		>
-			<span class="md:w-[70%] w-full">
-				Mission-ready satellite solutions for national security, maritime, remote business
-				operations, and aviation
-			</span>
-		</div>
+		<div id="industry">
+			<div
+				class="text-[#ffffff] font-semibold text-[1.2rem] lg:text-[1.7rem] lg:mb-10 mb-20 mt-20 w-full flex items-center justify-center lg:justify-start text-center lg:text-left"
+			>
+				<span class="md:w-[70%] w-full">
+					Mission-ready satellite solutions for national security, maritime, remote business
+					operations, and aviation
+				</span>
+			</div>
 
-		<div>
-			<Carousel {slides} autoPlay={true} interval={5000} />
-			<div class="bg-[#ffffff] w-full flex-col items-center justify-center rounded-[0.2rem]">
-				<div class="flex items-center justify-center">
-					<div
-						class="flex mt-10 font-semibold font-antarctica lg:text-[1.2rem] text-[#121a6b] text-[0.95rem]"
-					>
-						<h2>Thuraya-4 next-gen capabilities</h2>
+			<div>
+				<Carousel {slides} autoPlay={true} interval={5000} />
+				<div class="bg-[#ffffff] w-full flex-col items-center justify-center rounded-[0.2rem]">
+					<div class="flex items-center justify-center">
+						<div
+							class="flex mt-10 font-semibold font-antarctica lg:text-[1.2rem] text-[#121a6b] text-[0.95rem]"
+						>
+							<h2>Thuraya-4 next-gen capabilities</h2>
+						</div>
 					</div>
-				</div>
-				<div
-					class="lg:grid lg:grid-cols-4 px-8 lg:gap-8 gap-1 lg:mt-15 mt-4 sm:min-h-[400px] min-h-[300px] flex flex-col pb-6 lg:pb-0"
-				>
-					<NextGenCardDown
-						title="Advanced Technology"
-						svgSrc="/Asset 5.svg"
-						para="Based on the new all-electric Airbus Eurostar Neo platform."
-					/>
-					<NextGenCardDown
-						title="Wider Satellite Footprint"
-						svgSrc="/Asset 6.svg"
-						para="Europe, Africa, Central Asia and the Middle East."
-					/>
-					<NextGenCardDown
-						title="Innovative Design"
-						svgSrc="/Asset 7.svg"
-						para="Advanced routing flexibility of up to 3,200 channels with dynamic power allocation."
-					/>
-					<NextGenCardDown
-						title="Versatile Platform For Future Applications"
-						svgSrc="/Asset 8.svg"
-						para="New product development opportunities - IoT Maritime & Government"
-					/>
-					<NextGenCardDown
-						title="More Value"
-						svgSrc="/Asset 9.svg"
-						para="Affordable, reliable with flexible plans"
-					/>
-					<NextGenCardDown
-						title="Unmatched Reliability"
-						svgSrc="/Asset 10.svg"
-						para="Designed with security and resilience in mind"
-					/>
-					<NextGenCardDown
-						title="Higher Throughput"
-						svgSrc="/Asset 11.svg"
-						para="Wide range of data rates above 1 Mbps Efficient and smart resource management to support surge in hotspot areas"
-					/>
+					<div
+						class="lg:grid lg:grid-cols-4 px-8 lg:gap-8 gap-1 lg:mt-15 mt-4 sm:min-h-[400px] min-h-[300px] flex flex-col pb-6 lg:pb-0"
+					>
+						<NextGenCardDown
+							title="Advanced Technology"
+							svgSrc="/Asset 5.svg"
+							para="Based on the new all-electric Airbus Eurostar Neo platform."
+						/>
+						<NextGenCardDown
+							title="Wider Satellite Footprint"
+							svgSrc="/Asset 6.svg"
+							para="Europe, Africa, Central Asia and the Middle East."
+						/>
+						<NextGenCardDown
+							title="Innovative Design"
+							svgSrc="/Asset 7.svg"
+							para="Advanced routing flexibility of up to 3,200 channels with dynamic power allocation."
+						/>
+						<NextGenCardDown
+							title="Versatile Platform For Future Applications"
+							svgSrc="/Asset 8.svg"
+							para="New product development opportunities - IoT Maritime & Government"
+						/>
+						<NextGenCardDown
+							title="More Value"
+							svgSrc="/Asset 9.svg"
+							para="Affordable, reliable with flexible plans"
+						/>
+						<NextGenCardDown
+							title="Unmatched Reliability"
+							svgSrc="/Asset 10.svg"
+							para="Designed with security and resilience in mind"
+						/>
+						<NextGenCardDown
+							title="Higher Throughput"
+							svgSrc="/Asset 11.svg"
+							para="Wide range of data rates above 1 Mbps Efficient and smart resource management to support surge in hotspot areas"
+						/>
 
-					<!-- <div class="flex-col items-start justify-start p-5 flex-1">
+						<!-- <div class="flex-col items-start justify-start p-5 flex-1">
 						<div class="flex items-center justify-start">
 							<img class="w-50 mb-7" src="/Asset 5.svg" alt="" />
 						</div>
@@ -188,6 +196,7 @@
 							<p>Based on the new all-electric Airbus Eurostar Neo platform</p>
 						</div>
 					</div> -->
+					</div>
 				</div>
 			</div>
 		</div>
