@@ -13,7 +13,7 @@
 				<img class="w-70" src={imgSrc} alt="" />
 			</div>
 			<div
-				class="text-[#121a6b] font-semibold sm:text-[0.9rem] text-[0.8rem] mt-2 lg:text-left text-center"
+				class="text-[#121a6b] font-semibold sm:text-[0.8rem] text-[0.8rem] mt-2 lg:text-left text-center"
 			>
 				<span>{title}</span>
 			</div>

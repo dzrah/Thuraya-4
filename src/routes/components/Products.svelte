@@ -104,19 +104,19 @@
 			/>
 			<ProdctCard
 				productUrl="https://www.thuraya.com/en/products-list/aero/uav-aero-terminal-t220"
-				title="UAV 220"
+				title="T220 System For UAV"
 				imgSrc="/UAV_220.png"
 				para="Lightweight SATCOM link for unmanned aircraft, enabling BVLOS command, control, and payload data."
 			/>
 			<ProdctCard
 				productUrl="https://www.thuraya.com/en/products-list/aero/fixed-wing-aero-terminal-t320"
-				title="AERO 320"
+				title="T320 System For Fixed-Wing"
 				imgSrc="/AERO_320.png"
 				para="Airborne connectivity for fixed-wing platforms, supporting in-flight ops, tracking, and mission."
 			/>
 			<ProdctCard
 				productUrl="https://www.thuraya.com/en/products-list/aero/rotary-wing-aero-terminal-t420"
-				title="HELO 420"
+				title="T420 System For Rotary-Wing"
 				imgSrc="/Helo_420.png"
 				para="Helicopter-ready satcom engineered for vibration and rotor-wash, keeping crews connected in flight."
 			/>
