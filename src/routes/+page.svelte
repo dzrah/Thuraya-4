@@ -12,8 +12,7 @@
 	<Hero />
 
 	<NextGenSat />
+	<FormCRM />
 
 	<Products />
-
-	<FormCRM />
 </div>
