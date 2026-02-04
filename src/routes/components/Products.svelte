@@ -51,7 +51,7 @@
 <Section class="relative overflow-hidden" bgClass="bg-transparent">
 	<div class="absolute inset-x-0 top-0 h-[10%] bg-[#f0f1f7] -z-1000000"></div>
 	<div
-		class="absolute inset-x-0 top-[10%] sm:h-[63%] h-[90%] bg-[url('/blue_dark.jpg')] bg-cover bg-center -z-50"
+		class="absolute inset-x-0 top-[10%] sm:h-[67%] h-[90%] bg-[url('/blue_dark.jpg')] bg-cover bg-center -z-50"
 	></div>
 	<div class="absolute inset-x-0 bottom-0 sm:h-[40%] h-[5%] bg-[#f0f1f7] -z-1000000"></div>
 
@@ -120,6 +120,9 @@
 				imgSrc="/Helo_420.png"
 				para="Helicopter-ready satcom engineered for vibration and rotor-wash, keeping crews connected in flight."
 			/>
+		</div>
+		<div class="flex items-center justify-center">
+			<img class="w-280" src="/T4_Map_ .png" alt="" />
 		</div>
 	</Container>
 
